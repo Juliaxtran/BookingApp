@@ -4,35 +4,66 @@ import LocalAirportIcon from '@mui/icons-material/LocalAirport';
 import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
 import AttractionsIcon from '@mui/icons-material/Attractions';
 import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import PersonIcon from '@mui/icons-material/Person';
+import './header.css'
 
 
 
 function Header() {
   return (
     <div className='header'>
-      <div className='headerList'>
-        <div className="headerListItems">
-        <HotelIcon />
-        <span>Stays</span>
-        </div>
-        <div className="headerListItems">
-        <LocalAirportIcon />
-        <span>Flights</span>
-        </div>
-        <div className="headerListItems">
-        <DirectionsCarFilledIcon/>
-        <span>Car Rentals</span>
-        </div>
-        <div className="headerListItems">
-        <AttractionsIcon />
-        <span>Attractions</span>
-        </div>
-        <div className="headerListItems">
-        <LocalTaxiIcon />
-        <span>Airport Taxis </span>
-        </div>
+      <div className="headerContainer">
 
 
+        <div className='headerList'>
+          <div className="headerListItem active">
+            <HotelIcon />
+            <span>Stays</span>
+          </div>
+          <div className="headerListItem">
+            <LocalAirportIcon />
+            <span>Flights</span>
+          </div>
+          <div className="headerListItem">
+            <DirectionsCarFilledIcon />
+            <span>Car Rentals</span>
+          </div>
+          <div className="headerListItem">
+            <AttractionsIcon />
+            <span>Attractions</span>
+          </div>
+          <div className="headerListItem">
+            <LocalTaxiIcon />
+            <span>Airport Taxis </span>
+          </div>
+
+
+        </div>
+        <h1 className="headerTitle">Book unique places to stay and things to do.</h1>
+        <p className="headerDescription">Get rewarded for your travels - unlock instant savings of 10 percent of more with a free Julia's booking account</p>
+        <button className="headerBtn">Sign In / Register</button>
+        <div className='headerSearch'>
+          <div className="headerSearchItem">
+            <HotelIcon className='headerIcon'/>
+            <input type="text" placeholder='Where are you going?' className='headerSearchInput' />
+          </div>
+          <div className="headerSearchItem">
+            <CalendarTodayIcon className='headerIcon'/>
+            <span className='headerSearchText'>
+              date to date
+            </span>
+          </div>
+          <div className="headerSearchItem">
+            <PersonIcon className='headerIcon'/>
+            <span className='headerSearchText'>
+              2 adults 2 children 1 room
+            </span>
+          </div>
+          <div className="headerSearchItem">
+          <button className='headerBtn'>Search</button>
+          </div>
+        </div>
       </div>
     </div>
   )
