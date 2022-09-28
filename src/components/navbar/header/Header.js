@@ -7,15 +7,23 @@ import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
 import './header.css'
-
+import { DateRange } from 'react-date-range';
+import { useState } from 'react';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 
 function Header() {
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection'
+    }
+  ]);
   return (
     <div className='header'>
       <div className="headerContainer">
-
-
         <div className='headerList'>
           <div className="headerListItem active">
             <HotelIcon />
@@ -45,23 +53,29 @@ function Header() {
         <button className="headerBtn">Sign In / Register</button>
         <div className='headerSearch'>
           <div className="headerSearchItem">
-            <HotelIcon className='headerIcon'/>
+            <HotelIcon className='headerIcon' />
             <input type="text" placeholder='Where are you going?' className='headerSearchInput' />
           </div>
           <div className="headerSearchItem">
-            <CalendarTodayIcon className='headerIcon'/>
+            <CalendarTodayIcon className='headerIcon' />
             <span className='headerSearchText'>
               date to date
             </span>
+            <DateRange
+              editableDateInputs={true}
+              onChange={item => setDate([item.selection])}
+              moveRangeOnFirstSelection={false}
+              ranges={date}
+            />
           </div>
           <div className="headerSearchItem">
-            <PersonIcon className='headerIcon'/>
+            <PersonIcon className='headerIcon' />
             <span className='headerSearchText'>
               2 adults 2 children 1 room
             </span>
           </div>
           <div className="headerSearchItem">
-          <button className='headerBtn'>Search</button>
+            <button className='headerBtn'>Search</button>
           </div>
         </div>
       </div>
