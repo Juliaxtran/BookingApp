@@ -89,7 +89,7 @@ function Header({type}) {
               className='headerSearchText'>
               {/* format date will make it readiable  */}
 
-              {`${format(date[0].startDate, 'dd MMMM yyyy')} - ${format(date[0].endDate, 'dd MMMM yyyy')}`}
+              {`${format(date[0].startDate, 'MM/dd/yyyy')} - ${format(date[0].endDate, 'MM/dd/yyyy')}`}
             </span>
             {openDate && <DateRange
               editableDateInputs={true}
