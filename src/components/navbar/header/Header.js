@@ -11,13 +11,16 @@ import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import {format} from  "date-fns"
 
 
 function Header() {
+  const [openDate, setOpenDate] = useState(false)
+
   const [date, setDate] = useState([
     {
       startDate: new Date(),
-      endDate: null,
+      endDate: new Date(),
       key: 'selection'
     }
   ]);
@@ -57,16 +60,22 @@ function Header() {
             <input type="text" placeholder='Where are you going?' className='headerSearchInput' />
           </div>
           <div className="headerSearchItem">
-            <CalendarTodayIcon className='headerIcon' />
-            <span className='headerSearchText'>
-              date to date
+            <CalendarTodayIcon className='headerIcon'
+              onClick={() => setOpenDate(!openDate)}/>
+            <span
+            onClick={() => setOpenDate(!openDate)}
+            className='headerSearchText'>
+
+              {`${format(date[0].startDate, 'dd MMMM yyyy')} - ${format(date[0].endDate, 'dd MMMM yyyy')}`}
             </span>
-            <DateRange
+            {openDate &&  <DateRange
               editableDateInputs={true}
               onChange={item => setDate([item.selection])}
               moveRangeOnFirstSelection={false}
               ranges={date}
-            />
+              className='date'
+            /> }
+
           </div>
           <div className="headerSearchItem">
             <PersonIcon className='headerIcon' />
