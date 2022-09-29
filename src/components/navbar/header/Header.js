@@ -107,7 +107,9 @@ function Header() {
               <div className="optionItem">
                 <span className='optionText'>Adults</span>
                 <div className="optionCounter">
+                  {/* We can give it a disabled option so it doesn't go under 1  */}
                   <button
+                    disabled={options.adult <= 1}
                     className='optionCounterButton'
                     onClick={() => handleOption('adult', 'decrease')}>
                     -
@@ -124,6 +126,7 @@ function Header() {
                 <span className='optionText'>Children</span>
                 <div className="optionCounter">
                   <button
+                    disabled={options.children <= 0}
                     className='optionCounterButton'
                     onClick={() => handleOption('children', 'decrease')}>-</button>
                   <span className="optionCounterNumber">{options.children}</span>
@@ -137,6 +140,7 @@ function Header() {
                 <span className='optionText'>Room</span>
                 <div className="optionCounter">
                   <button
+                    disabled={options.room <= 1}
                     className='optionCounterButton'
                     onClick={() => handleOption('room', 'decrease')}>-</button>
                   <span className="optionCounterNumber">{options.room}</span>
