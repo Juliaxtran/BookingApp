@@ -11,7 +11,7 @@ import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import {format} from  "date-fns"
+import { format } from "date-fns"
 
 
 function Header() {
@@ -24,6 +24,23 @@ function Header() {
       key: 'selection'
     }
   ]);
+
+  const [openOptions, setOpenOptions] = useState(false)
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  })
+
+  const handleOption = (name, operation) => {
+    setOptions(prev => {
+      return {
+        ...prev,
+        [name]: operation === 'increase' ? options[name] + 1 : options[name] - 1
+      };
+    });
+  };
+
   return (
     <div className='header'>
       <div className="headerContainer">
@@ -59,29 +76,77 @@ function Header() {
             <HotelIcon className='headerIcon' />
             <input type="text" placeholder='Where are you going?' className='headerSearchInput' />
           </div>
+          {/* Calender  */}
           <div className="headerSearchItem">
             <CalendarTodayIcon className='headerIcon'
-              onClick={() => setOpenDate(!openDate)}/>
+              onClick={() => setOpenDate(!openDate)} />
             <span
-            onClick={() => setOpenDate(!openDate)}
-            className='headerSearchText'>
+              onClick={() => setOpenDate(!openDate)}
+              className='headerSearchText'>
+              {/* format date will make it readiable  */}
 
               {`${format(date[0].startDate, 'dd MMMM yyyy')} - ${format(date[0].endDate, 'dd MMMM yyyy')}`}
             </span>
-            {openDate &&  <DateRange
+            {openDate && <DateRange
               editableDateInputs={true}
               onChange={item => setDate([item.selection])}
               moveRangeOnFirstSelection={false}
               ranges={date}
               className='date'
-            /> }
+            />}
 
           </div>
           <div className="headerSearchItem">
             <PersonIcon className='headerIcon' />
             <span className='headerSearchText'>
-              2 adults 2 children 1 room
+              {`${options.adult} Adults, ${options.children} Children, ${options.room} Room`}
             </span>
+            {/* Options with buttons  */}
+            <div className="options">
+              {/* 1 OPTION ITEM  */}
+              <div className="optionItem">
+                <span className='optionText'>Adults</span>
+                <div className="optionCounter">
+                  <button
+                    className='optionCounterButton'
+                    onClick={() => handleOption('adult', 'decrease')}>
+                    -
+                  </button>
+                  <span className="optionCounterNumber">{options.adult}</span>
+                  <button
+                    className='optionCounterButton'
+                    onClick={() => handleOption('adult', 'increase')}>
+                    +</button>
+                </div>
+              </div>
+              {/* 1 OPTION ITEM  */}
+              <div className="optionItem">
+                <span className='optionText'>Children</span>
+                <div className="optionCounter">
+                  <button
+                    className='optionCounterButton'
+                    onClick={() => handleOption('children', 'decrease')}>-</button>
+                  <span className="optionCounterNumber">{options.children}</span>
+                  <button
+                    className='optionCounterButton'
+                    onClick={() => handleOption('children', 'increase')}>+</button>
+                </div>
+              </div>
+              {/* 1 OPTION ITEM  */}
+              <div className="optionItem">
+                <span className='optionText'>Room</span>
+                <div className="optionCounter">
+                  <button
+                    className='optionCounterButton'
+                    onClick={() => handleOption('room', 'decrease')}>-</button>
+                  <span className="optionCounterNumber">{options.room}</span>
+                  <button
+                    className='optionCounterButton'
+                    onClick={() => handleOption('room', 'increase')}>+</button>
+                </div>
+              </div>
+
+            </div>
           </div>
           <div className="headerSearchItem">
             <button className='headerBtn'>Search</button>
