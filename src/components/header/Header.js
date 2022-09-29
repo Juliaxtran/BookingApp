@@ -14,7 +14,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns"
 
 
-function Header() {
+function Header({type}) {
   const [openDate, setOpenDate] = useState(false)
 
   const [date, setDate] = useState([
@@ -43,7 +43,9 @@ function Header() {
 
   return (
     <div className='header'>
-      <div className="headerContainer">
+      {/* conditon with type  */}
+      <div className={type === 'list'? "headerContainer listMode" : 'headerContainer'}>
+
         <div className='headerList'>
           <div className="headerListItem active">
             <HotelIcon />
@@ -68,6 +70,8 @@ function Header() {
 
 
         </div>
+
+        { type !== 'list' && <>
         <h1 className="headerTitle">Book unique places to stay and things to do.</h1>
         <p className="headerDescription">Get rewarded for your travels - unlock instant savings of 10 percent of more with a free Julia's booking account</p>
         <button className="headerBtn">Sign In / Register</button>
@@ -162,6 +166,7 @@ function Header() {
             <button className='headerBtn'>Search</button>
           </div>
         </div>
+        </>}
       </div>
     </div>
   )
