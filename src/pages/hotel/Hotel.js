@@ -2,7 +2,9 @@ import React from 'react'
 import './hotel.css'
 import Navbar from '../../components/navbar/Navbar'
 import Header from '../../components/header/Header'
-import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import FmdGoodIcon from '@mui/icons-material/FmdGood'
+import EmailList from '../../components/emailList/EmailList'
+import Footer from '../../components/footer/Footer'
 
 function Hotel() {
 
@@ -33,6 +35,7 @@ function Hotel() {
       <Header type='list' />
       <div className="hotelContainer">
         <div className="hotelWrapper">
+          <button className='bookNow'>Reserve or Book Now!</button>
           <h1 className='hotelTitle'> Grand Hotel</h1>
           <div className="hotelAddress">
             <FmdGoodIcon className='hotelIcon' />
@@ -67,12 +70,15 @@ function Hotel() {
             <div className="hotelDetailsPrice">
               <h1>Perfect for a 9-night stay!</h1>
               <span> Located in the real heart of Krakow, this property has an excellent location score of 9.5</span>
-              <h2><bold>$945</bold> (9 nights) </h2>
+              <h2><b>$945</b> (9 nights) </h2>
               <button>Reserve or Book Now!</button>
             </div>
           </div>
         </div>
+        <EmailList />
+        <Footer />
       </div>
+
     </div>
   )
 }
