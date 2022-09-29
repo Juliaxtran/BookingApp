@@ -98,13 +98,12 @@ function Header() {
           </div>
           <div className="headerSearchItem">
             <PersonIcon
-            className='headerIcon'
-            onClick={() => setOpenOptions(!openOptions)}
+              className='headerIcon'
+              onClick={() => setOpenOptions(!openOptions)}
             />
             <span
-            className='headerSearchText'
-            className='headerIcon'
-            onClick={() => setOpenOptions(!openOptions)}>
+              className='headerSearchText'
+              onClick={() => setOpenOptions(!openOptions)}>
               {`${options.adult} Adults, ${options.children} Children, ${options.room} Room`}
             </span>
             {/* Options with buttons  */}
@@ -156,7 +155,7 @@ function Header() {
                 </div>
               </div>
 
-            </div> }
+            </div>}
 
           </div>
           <div className="headerSearchItem">
