@@ -44,7 +44,7 @@ function Header({ type }) {
     });
   };
 
-  // can send state 
+  // can send state
   const handleSearch = () => {
     navigate('/hotels', {
       state: {
@@ -113,6 +113,8 @@ function Header({ type }) {
                 onChange={item => setDate([item.selection])}
                 moveRangeOnFirstSelection={false}
                 ranges={date}
+    
+              minDate={new Date()}
                 className='date'
               />}
 
