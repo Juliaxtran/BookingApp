@@ -4,7 +4,7 @@ import './featuredProperties.css';
 
 
 
-function featuredProperties() {
+function FeaturedProperties() {
 
   const url = "http://localhost:3002/api/hotels?featured=true&limit=4&min=10&max=200";
 
@@ -44,4 +44,4 @@ function featuredProperties() {
   )
 }
 
-export default featuredProperties
+export default FeaturedProperties
